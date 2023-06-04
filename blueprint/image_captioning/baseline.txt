@@ -11,3 +11,13 @@ https://github.com/Vision-CAIR/MiniGPT-4
 Image from text
 https://huggingface.co/blog/blip-2
 https://www.linkedin.com/pulse/picturethis-crafting-visuals-llms-text-to-image-magic-sanjay-t-s/
+
+
+
+Image generate 
+https://github.com/lucidrains/DALLE2-pytorch
+
+
+
+step 1. Make data from DALLE (It is possible to generate person? - test)
+step 2. Make caption from MiniGPT-4
