@@ -1,0 +1,17 @@
+~2023.07.09
+  I tried to search the data set for this practice, but couldn't find it.
+
+  condition 1. Image data should contain human and background(ex. object, sky...)
+  condition 2. The situation should be inferred from the rest of the information except for the main character in given image
+  condition 3. From the situation or image iteself(priority), the purpose of the main character should be inferred
+
+The image generation model was the last way for data collection, but from now on, I have to use if for making dataset.. (at least 10,000)
+
+And have to check below lise
+1. How to design ontology to produce the intended result(predicting emotion state - cause of emotion pair or what the main character in the picture wants right now)
+2. How to design ontology which contain various scenario
+3. How to enhance ontological path to personalize
+4. How to handle Minigpt4 (to produce the inteded result - contain emotion state and inferred wants)
+
+Most of all, Emotion state is really needed? Although the ultimate goal is to create a model for person with autism...
+But it is really needed for un-autism person...?
