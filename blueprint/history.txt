@@ -18,4 +18,4 @@ But it is really needed for un-autism person...?
 
 2023.07.16
 For image generation, I will use https://github.com/lucidrains/imagen-pytorch not dall-e model. Imagen is more easy to use
-After code and usage analyzing, I will revise it for my own purpose
+After code and usage analyzing, I will revise it for my own purpose : https://github.com/JinSeoung-Oh/reasoning_practice/blob/main/blueprint/image_generate/imagen-pytorch/imagen.txt
