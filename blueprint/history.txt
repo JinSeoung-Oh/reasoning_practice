@@ -15,3 +15,7 @@ And have to check below lise
 
 Most of all, Emotion state is really needed? Although the ultimate goal is to create a model for person with autism...
 But it is really needed for un-autism person...?
+
+2023.07.16
+For image generation, I will use https://github.com/lucidrains/imagen-pytorch not dall-e model. Imagen is more easy to use
+After code and usage analyzing, I will revise it for my own purpose
