@@ -61,4 +61,16 @@ and condition the diffusion model on aug_level. During training, aug_level is ch
 noise augmentation resembling the forward process used in diffusion models. The
 augmentation level is specified using aug_level ∈ [0, 1].
 
+## NN architecture
+1. Base model
+The network is conditioned on text embeddings via a pooled embedding vector, added
+to the diffusion timestep embedding similar to the class embedding conditioning method
+Further condition on the entire sequence of text embeddings by adding cross attention over the text embeddings at multiple resolutions
+
+2. SR models 
+In the case of 246 super-resolution(64x64 --> 256x256), the U-Net model used in improved DDPM and Palette is used(Efficient U-Net)
+In the case of 1024 super-resolution(256x256 --> 1024x1024), trains on 64×64 → 256×256 crops of the 1024 × 1024 image
+To do this, self-attension layer is removed and keep the text cross-attention layer
+During inference, a full 256x256 low-resolution image is taken as input and output is updampled 1024x1024 images 
+
 ![Imagen](https://github.com/JinSeoung-Oh/reasoning_practice/assets/78573459/cf61b2a7-25df-45da-861e-10c6602dec5b)
