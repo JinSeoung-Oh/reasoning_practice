@@ -1,1 +1,63 @@
+## https://arxiv.org/pdf/2205.11487.pdf
+
+Imagen builds on the power of large transformer language models in understanding text and hinges
+on the strength of diffusion models in high-fidelity image generation
+Generic large language model, pretrained on text-onlycorpora, are surprisingly effective 
+at encoding text for image synthesis: increasing the size of the language model 
+in Imagen boosts both sample fidelity and imagetext alignment much more than 
+increasing the size of the image diffusion mode
+
+Imagen is consist of one fixed T5-XXL encoder and two super-resolution diffusion model
+*T5-XXL encoder : mapping enbedding sequence(from input text data) and 64x64 image diffusion model
+*Super-resolution model (one sr model generate 256x256 and the other generate 1024x1024)
+All diffusion model conditioned by text embedding sequence and use classifier-free guidance
+
+######################################################################################################
+** Classifier guidance
+Classifier guidance is a way to trade-off the diversity and fidelity of the sample in the process
+after learning the conditional diffusion model. A gradient of the log likelihood of an auxiliary classifier
+model was added after the score (first derivative of the negative log likelihood function) from estimation function
+in the sampling process
+But CG need class label and have to train classifier
+
+** Classifier-Free-Guidance
+~e_t = (1+w)e_septa(z_t,c) - w*e_septa(z_t)
+w 는 조절 가능한 가중치
+e_septa(z_t, c) is conditioned by text condition and e_septa(z_t) is unconditioned
+
+(1+w)ϵθ(zt,c)−wϵθ(zt)=w(ϵθ(zt,c)−ϵθ(zt))+ϵθ(zt,c)
+--> (sample conditional likelihood) - (sample unconditional likelihood)
+--> To apply CFG, we have to train unconditioned(by text) data
+########################################################################################################
+
+Imagen is consist of one fixed T5-XXL encoder and two super-resolution diffusion model
+1. Pretrained text encoders
+Text-to-image models need powerful semantic text encoders to capture the complexity and compositionality 
+of arbitrary natural language text inputs.
+--> Imagen used T5-XXL model
+
+2. Diffusion models and classifier-free guidance
+Diffusion models are a class of generative models that convert Gaussian noise into
+samples from a learned data distribution via an iterative denoising process. These models can be
+conditional, for example on class labels, text, or low-resolution images
+## check equation from paper : https://arxiv.org/pdf/2205.11487.pdf
+
+3. Large guidance weight samplers
+-1. Static thresholding
+Elementwise clipping from predicted x(value to [-1,1])
+Static thresholding was essential for sampling with large guidance weights and prevented of empty images
+Static thresholding still produces oversaturated and less detailed images as the guidance weights are further increased.
+
+-2. Dynamic thresholding
+At each sampling step, set s to a certain percentile absolute pixel value 
+in xˆt_0, and if s > 1, then we threshold xˆt_0 to the range [−s, s] and then divide by s.
+Dynamic thresholding pushes saturated pixels (those near -1 and 1) inwards, thereby actively preventing pixels from saturation 
+at each step
+
+-3. Robust cascaded diffusion models
+Imagen uses noise conditioning augmentation for both the super-resolution models. 
+Given a conditioning low-resolution image and augmentation level, corrupt the low-resolution image with the augmentation, 
+and condition the diffusion model on aug_level. During training, aug_level is chosen randomly, while during inference, sweep over its different values to find the best sample quality. Use Gaussian noise as a form of augmentation, and apply variance preserving Gaussian
+noise augmentation resembling the forward process used in diffusion models. The
+augmentation level is specified using aug_level ∈ [0, 1].
 
