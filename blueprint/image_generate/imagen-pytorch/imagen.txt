@@ -61,4 +61,4 @@ and condition the diffusion model on aug_level. During training, aug_level is ch
 noise augmentation resembling the forward process used in diffusion models. The
 augmentation level is specified using aug_level ∈ [0, 1].
 
-![다운로드](https://github.com/JinSeoung-Oh/reasoning_practice/assets/78573459/cf61b2a7-25df-45da-861e-10c6602dec5b)
+![Imagen](https://github.com/JinSeoung-Oh/reasoning_practice/assets/78573459/cf61b2a7-25df-45da-861e-10c6602dec5b)
