@@ -1,6 +1,7 @@
 ## Train_code with text
 import torch
-from imagen_pytorch import Unet, Imagen
+from imagen_pytorch import Unet, Imagen, ImagenTrainer
+from imagen_pytorch.data import Dataset
 
 unet1 = Unet(
     dim = 32,
@@ -22,6 +23,7 @@ unet2 = Unet(
 
 
 imagen = Imagen(
+    condition_on_text = False,
     unets = (unet1, unet2),
     image_sizes = (64, 256),
     timesteps = 1000,
@@ -36,19 +38,22 @@ texts = [
     'seashells sparkling in the shallow waters'
 ]
 
-images = torch.randn(4, 3, 256, 256).cuda()
+dataset = Dataset('/path/to/training/images', image_size = 128)
+trainer.add_train_dataset(dataset, batch_size = 16)
 
 # feed images into imagen, training each unet in the cascade
 
-loss = trainer(
-    images,
-    text_embeds = text_embeds,
-    unet_number = 1,            
-    max_batch_size = 4        
-)
+for i in range(200000):
+    loss = trainer.train_step(unet_number = 1, max_batch_size = 4)
+    print(f'loss: {loss}')
 
-trainer.update(unet_number = 1)
+    if not (i % 50):
+        valid_loss = trainer.valid_step(unet_number = 1, max_batch_size = 4)
+        print(f'valid loss: {valid_loss}')
 
+    if not (i % 100) and trainer.is_main: # is_main makes sure this can run in distributed
+        images = trainer.sample(batch_size = 1, return_pil_images = True) # returns List[Image]
+        images[0].save(f'./sample-{i // 100}.png')
 
 images = imagen.sample(texts = [
     'a whale breaching from afar',
