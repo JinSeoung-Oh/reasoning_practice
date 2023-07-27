@@ -26,3 +26,7 @@ After anayzing imagen-pytorch code and paper, I have to consider using this mode
 2. Try to find out imagen checkpoint and apply it on imagen-pytorch
 3. Just use imagen
 4. Back to the dall-e model
+
+~2023.07.27
+I cannot find out imagen weight. Have to back to the dalle-e model and find out its weights..
+If I cannot find out dall-e weight.. then try to find out the other model
