@@ -33,3 +33,6 @@ If I cannot find out dall-e weight.. then try to find out the other model
 
 2023.07.31 ~ 
 Checking https://github.com/jina-ai/dalle-flow/tree/8539f97995f0d6d139edfefcd670c914cd06c366
+
+2023.08.03 ~
+checking https://github.com/lucidrains/DALLE2-pytorch
