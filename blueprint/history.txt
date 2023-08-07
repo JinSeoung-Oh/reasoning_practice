@@ -31,8 +31,15 @@ After anayzing imagen-pytorch code and paper, I have to consider using this mode
 I cannot find out imagen weight. Have to back to the dalle-e model and find out its weights..
 If I cannot find out dall-e weight.. then try to find out the other model
 
-2023.07.31 ~ 
+2023.07.31 ~ 2013.08.03
 Checking https://github.com/jina-ai/dalle-flow/tree/8539f97995f0d6d139edfefcd670c914cd06c366
+This repository is about server for dalle 2
+I don't need server, so I will pass it
 
-2023.08.03 ~
+2023.08.03 ~ 2023.08.03
 checking https://github.com/lucidrains/DALLE2-pytorch
+This repository is useful.
+I will test it for my own project
+
+2023.08.03 ~ 
+Testing : https://github.com/lucidrains/DALLE2-pytorch
