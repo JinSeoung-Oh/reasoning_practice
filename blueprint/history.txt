@@ -41,5 +41,8 @@ checking https://github.com/lucidrains/DALLE2-pytorch
 This repository is useful.
 I will test it for my own project
 
-2023.08.03 ~ 
-Testing : https://github.com/lucidrains/DALLE2-pytorch
+2023.08.03 ~ 2023.08.14
+Testing : https://github.com/lucidrains/DALLE2-pytorch (code base)
+--> https://github.com/LAION-AI/dalle2-laion (trained model)
+
+2023.08.15 ~
