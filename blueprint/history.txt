@@ -47,6 +47,8 @@ Testing : https://github.com/lucidrains/DALLE2-pytorch (code base)
 
 2023.08.15 ~
 08.15 --> dalle2-laion take some time for downloading weight and make a image.. And it is fail downloading new version of dalle2-laion. 
-          So, I have to check it(Can I download new version?). And to generate image, I have to enter prompt in terminal. I think it is not good
+          And its result is just trash.(prompt : some people enjoy the party)
+          So, I have to check it(Can I download new version?). 
+          And to generate image, I have to enter prompt in terminal. I think it is not good
           So, I will try to make it can handle corpus
 08.16~
