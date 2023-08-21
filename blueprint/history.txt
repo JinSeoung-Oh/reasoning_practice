@@ -51,4 +51,5 @@ Testing : https://github.com/lucidrains/DALLE2-pytorch (code base)
           So, I have to check it(Can I download new version?). 
           And to generate image, I have to enter prompt in terminal. I think it is not good
           So, I will try to make it can handle corpus
-08.16~
+
+08.21 --> dalle2-iaion model show pool result.. I will try to someting and then diside ust it or not 
