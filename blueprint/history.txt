@@ -53,3 +53,7 @@ Testing : https://github.com/lucidrains/DALLE2-pytorch (code base)
           So, I will try to make it can handle corpus
 
 08.21 --> dalle2-iaion model show pool result.. I will try to someting and then diside ust it or not 
+08.22 --> start check stable diffusion v2 + re-check dalle2-iaion
+          -- future work-- 
+          + https://github.com/monarch-initiative/ontogpt (check this)
+          + check miniGPT
