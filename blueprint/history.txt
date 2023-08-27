@@ -57,3 +57,8 @@ Testing : https://github.com/lucidrains/DALLE2-pytorch (code base)
           -- future work-- 
           + https://github.com/monarch-initiative/ontogpt (check this)
           + check miniGPT
+
+08.27 --> I will use stable diffusion v2 and image variant model. To handle korean, I will add translation model
+          -- future work-- 
+          + https://github.com/monarch-initiative/ontogpt (check this)
+          + check miniGPT
