@@ -1,0 +1,77 @@
+from https://ai.plainenglish.io/reasoning-on-graphs-with-llms-a-new-era-of-knowledge-integration-60b1facd1257
+
+# Knowledge graphs (KGs) represent factual knowledge as graphs with:
+   1. Nodes representing real-world entities
+   2. Edges representing relations between entities
+      - KGs provide a structured topology and rich semantics
+
+   3. limitation
+      - KGs are difficult to encode directly due to their scale and sparsity
+      - Models must learn to leverage both their topology and semantics
+
+# The Reasoning on Graphs (RoG)
+  - Technique offers a principled approach for training language models  to conduct reasoning directly on knowledge graphs in a grounded, interpretable manner
+ 
+  1. Relation Path Planning: Generating a high-level plan using sequences of relations
+     - The language model is prompted to produce a plan for reasoning on the KG
+     - The LM produces a relation path between the question and potential answers using its learned knowledge of the KG schema
+     - This path represents the plan: find the landmark’s location, then lookup the containing city
+  2. Reasoning Path Retrieval: Grounding the plan by retrieving concrete paths from the KG
+     - The relation path is used to retrieve concrete instantiations from the KG
+     - The retrieval grounds the abstract plan in real KG topology and entities
+  3. Grounded Reasoning: Answering questions conditioned on retrieved paths
+     - The LM answers the original question using the retrieved paths
+     - Conditioning the LM’s answer on graph evidence keeps its reasoning grounded in world knowledge
+
+  ** The RoG(Reasoning on Graphs) approach offers a way to intergrate knowledge graphs with language models that:
+     1. Guides structured relation path planning using the KG schema
+     2. Grounds reasoning in factual topology through retrieval
+     3. Answers questions based on real-world evidence
+
+## How to train RoG model?
+The key to getting RoG to effectively leverage knowledge graphs is properly training the model’s planning and reasoning capacities
+
+# Tranning data
+  - Question-answer pairs from KGQA datasets like WebQuestionsSP and CWQ
+  - The associated knowledge graph, like Freebase
+
+# Model Architecture
+A pretrained large language model like LLaMA2-Chat serves as the basis. 
+RoG adds modular components
+ - Planning Module : Relation path generator
+ - Retrieval Module : Graph search algorithm
+ - Reasoning Module : Answer generator
+
+# Training Procedure
+During training
+ - Planning module generates candidate relation paths
+ - Retrieval module populates retrieved reasoning paths using the relation paths
+ - Reasoning module is prompted to answer given the reasoning paths
+ - Combined loss optimizes planning and reasoning accuracy
+
+# Training Loop
+The training loop involves
+ - Feeding batches of dataset
+ - Performing the training procedure
+ - Updating parameters to optimize the combined loss
+ - Tracking validation performance
+Multiple epochs are run until validation accuracy plateaus
+
+# Training Objectives
+The overall training loss optimizes:
+ - Planning loss : Generate vaild KG-grounded relation paths
+ - Reasoning loss : Answer accurately given retrieved paths
+
+## The Flexibility of RoG
+# Language Model Foundation
+  - RoG can use any large language model as its base
+  - The modular prompts allow integrating any LLM that is trainable
+
+# Retrieval Algorithm
+  - The retrieval module can leverage different graph search algorithms
+   Ex) Breadth/depth-first search, Heuristic search like A*, Approximate methods like random walks
+
+# Knowledge Graphs
+  - RoG can work with any knowledge graph, not just a specific ontology
+  - The training methodology allows adapting it to new KGs
+  - But it does require fine-tuning separately for each KG to handle differences in semantics and topology
