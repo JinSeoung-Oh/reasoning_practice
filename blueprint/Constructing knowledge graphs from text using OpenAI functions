@@ -1,0 +1,142 @@
+from https://bratanic-tomaz.medium.com/constructing-knowledge-graphs-from-text-using-openai-functions-096a6d010c17
+
+## Neo4j Environment setup
+The easiest way is to start a free instance on Neo4j Aura, which offers cloud instances of Neo4j database. Alternatively, 
+you can also setup a local instance of the Neo4j database by downloading the Neo4j Desktop application and creating a local database instance
+
+##############################################
+from langchain.graphs import Neo4jGraph
+
+url = "neo4j+s://databases.neo4j.io"
+username ="neo4j"
+password = ""
+graph = Neo4jGraph(
+    url=url,
+    username=username,
+    password=password
+)
+################################################
+
+## Information extraction pipeline
+1. Rrun the input text through a coreference resolution model. 
+   -The coreference resolution is the task of finding all expressions that refer to a specific entity
+
+2. The entity disambiguation step, an essential but often overlooked part of an information extraction pipeline
+   -Entity disambiguation is the process of accurately identifying and distinguishing between entities with similar names 
+    or references to ensure the correct entity is recognized in a given context.
+
+3. The model tried to identify various relationships between entities
+
+## Extracting structured information with OpenAI functions
+In LangChain, you can pass a Pydantic class as description of the desired JSON object of the OpenAI functions feature
+LangChain already has definitions of nodes and relationship as Pydantic classes that we can reuse
+
+#############################################################################################################################################
+*** Have to check below code ***
+from langchain.graphs.graph_document import (
+    Node as BaseNode,
+    Relationship as BaseRelationship
+)
+from typing import List, Dict, Any, Optional
+from langchain.pydantic_v1 import Field, BaseModel
+
+class Property(BaseModel):
+  """A single property consisting of key and value"""
+  key: str = Field(..., description="key")
+  value: str = Field(..., description="value")
+
+class Node(BaseNode):
+    properties: Optional[List[Property]] = Field(
+        None, description="List of node properties")
+
+class Relationship(BaseRelationship):
+    properties: Optional[List[Property]] = Field(
+        None, description="List of relationship properties"
+    )
+
+class KnowledgeGraph(BaseModel):
+    """Generate a knowledge graph with entities and relationships."""
+    nodes: List[Node] = Field(
+        ..., description="List of nodes in the knowledge graph")
+    rels: List[Relationship] = Field(
+        ..., description="List of relationships in the knowledge graph"
+    )
+
+llm = ChatOpenAI(model="gpt-3.5-turbo-16k", temperature=0)
+
+def get_extraction_chain(
+    allowed_nodes: Optional[List[str]] = None,
+    allowed_rels: Optional[List[str]] = None
+    ):
+    prompt = ChatPromptTemplate.from_messages(
+    [(
+      "system",
+      f"""# Knowledge Graph Instructions for GPT-4
+## 1. Overview
+You are a top-tier algorithm designed for extracting information in structured formats to build a knowledge graph.
+- **Nodes** represent entities and concepts. They're akin to Wikipedia nodes.
+- The aim is to achieve simplicity and clarity in the knowledge graph, making it accessible for a vast audience.
+## 2. Labeling Nodes
+- **Consistency**: Ensure you use basic or elementary types for node labels.
+  - For example, when you identify an entity representing a person, always label it as **"person"**. Avoid using more specific terms like "mathematician" or "scientist".
+- **Node IDs**: Never utilize integers as node IDs. Node IDs should be names or human-readable identifiers found in the text.
+{'- **Allowed Node Labels:**' + ", ".join(allowed_nodes) if allowed_nodes else ""}
+{'- **Allowed Relationship Types**:' + ", ".join(allowed_rels) if allowed_rels else ""}
+## 3. Handling Numerical Data and Dates
+- Numerical data, like age or other related information, should be incorporated as attributes or properties of the respective nodes.
+- **No Separate Nodes for Dates/Numbers**: Do not create separate nodes for dates or numerical values. Always attach them as attributes or properties of nodes.
+- **Property Format**: Properties must be in a key-value format.
+- **Quotation Marks**: Never use escaped single or double quotes within property values.
+- **Naming Convention**: Use camelCase for property keys, e.g., `birthDate`.
+## 4. Coreference Resolution
+- **Maintain Entity Consistency**: When extracting entities, it's vital to ensure consistency.
+If an entity, such as "John Doe", is mentioned multiple times in the text but is referred to by different names or pronouns (e.g., "Joe", "he"), 
+always use the most complete identifier for that entity throughout the knowledge graph. In this example, use "John Doe" as the entity ID.  
+Remember, the knowledge graph should be coherent and easily understandable, so maintaining consistency in entity references is crucial. 
+## 5. Strict Compliance
+Adhere to the rules strictly. Non-compliance will result in termination."""),
+        ("human", "Use the given format to extract information from the following input: {input}"),
+        ("human", "Tip: Make sure to answer in the correct format"),
+    ])
+    return create_structured_output_chain(KnowledgeGraph, llm, prompt, verbose=False)
+
+def extract_and_store_graph(
+    document: Document,
+    nodes:Optional[List[str]] = None,
+    rels:Optional[List[str]]=None) -> None:
+    # Extract graph data using OpenAI functions
+    extract_chain = get_extraction_chain(nodes, rels)
+    data = extract_chain.run(document.page_content)
+    # Construct a graph document
+    graph_document = GraphDocument(
+      nodes = [map_to_base_node(node) for node in data.nodes],
+      relationships = [map_to_base_relationship(rel) for rel in data.rels],
+      source = document
+    )
+    # Store information into a graph
+    graph.add_graph_documents([graph_document])
+#############################################################################################################################################
+
+## Entity disambiguation
+The entity disambiguation problem is nothing new and there has been various solution proposed to solve it:
+
+1. Using entity linking or entity disambiguation NLP models
+2. Doing a second pass through an LLM and asking it to perform entity disambiguation
+3. Graph-based approaches
+
+## Rag Application
+####################################################################
+# Query the knowledge graph in a RAG application
+from langchain.chains import GraphCypherQAChain
+
+graph.refresh_schema()
+
+cypher_chain = GraphCypherQAChain.from_llm(
+    graph=graph,
+    cypher_llm=ChatOpenAI(temperature=0, model="gpt-4"),
+    qa_llm=ChatOpenAI(temperature=0, model="gpt-3.5-turbo"),
+    validate_cypher=True, # Validate relationship directions
+    verbose=True
+)
+cypher_chain.run("When was Walter Elias Disney born?")
+####################################################################
