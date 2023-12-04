@@ -1,0 +1,56 @@
+from https://medium.com/thirdai-blog/defying-logic-reasoning-and-even-agi-chatgpts-unconventional-intelligence-adc61eb197cc
+*** Summarize by GPT 3.5 *** 
+
+The concept of memory-based intelligence and the role of memorization in human cognition and artificial intelligence, 
+particularly focusing on models like ChatGPT.
+
+
+# Memorization and Conditioning
+* How humans often exhibit memory-based intelligence, where certain information, phrases, or responses are ingrained in memory through repetition.
+  - It is classical conditioning(ex. muscle memory). This article focus on intellegence built by classical conditioning
+    Becuase it is similar with ML training process 
+  - Classical conditioning has scientifically established that stimuli also exhibit similar behavior; the next stimuli can be hard-memorized, 
+    with reinforcement or punishment (loss)
+* It draws parallels between human memory, conditioned responses, and the way models like ChatGPT are trained to memorize sequences of words
+
+# Role of ChatGPT and LLMs
+* ChatGPT is presented as an example of the power of memorization at an unprecedented scale, surpassing human capabilities
+  - Fundamentally, they are memorizers of the next word, given the past 1500 words (or the context size). It’s evident from a well-known ICLR Best Paper 
+    that these large neural networks can memorize any data, even nonsensical noise or content.
+  - The neural network architecture itself doesn’t exhibit intelligence, but can imitate human when it trained
+
+# Conditioning and Evolution
+* The article speculates on the broader implications of conditioning in human behavior,
+  drawing connections to evolutionary conditioning over millions of years.
+* It introduces the concept of "Karmic Conditioning" as a way to describe the influence of long-term conditioning on human actions and thoughts
+
+# Mathematics and Memorization
+* The article explores the role of memorization in mathematics, starting with simple additions like 2 + 2 and progressing to more complex operations
+* It suggests that, with enough conditioning, even complex mathematical tasks can be managed through memorization.
+
+# Examples from History:
+* Historical examples, such as Lawrence Peek (depicted in the movie "Rain Man") and mathematician Srinivas Ramanujan, 
+  are cited to illustrate instances where individuals demonstrated exceptional memory and mathematical abilities.
+
+# Trade-Off in Memory-Based Intelligence
+* The article acknowledges a possible trade-off in memory-based intelligence, citing cases where even experts like Ramanujan got some results wrong
+* It discusses the challenge of controlling memory-based responses all the time.
+
+# ChatGPT's Mathematical Abilities
+* ChatGPT's ability to perform math by memorizing next tokens is highlighted as evidence that a significant portion 
+  of mathematics can be managed through memorization
+* The article suggests that reasoning is challenging for machines, while memorization is comparatively easier.
+
+# Beyond AGI
+* The article questions whether ChatGPT is approaching Artificial General Intelligence (AGI) 
+  and emphasizes that ChatGPT represents broader possibilities beyond traditional definitions of AGI.
+* It suggests that ChatGPT's ability to exhibit metaphysical behaviors of human 
+  experts opens the door to a new dimension of intelligence that goes beyond logic and reasoning
+
+# Engineering a New Realm of Intelligence
+* The article concludes by stating that ChatGPT represents an era in which a new dimension of intelligence can be engineered, 
+  encompassing forms of intelligence that 'just flow' and are achieved through 'hard' conditioning
+
+Overall, the article explores the interplay between memory, conditioning, and intelligence, using examples from both human cognition 
+and AI models like ChatGPT.  It challenges conventional notions of intelligence and suggests that the memorization capabilities 
+demonstrated by models like ChatGPT offer exciting possibilities for the future of AI.
