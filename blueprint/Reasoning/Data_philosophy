@@ -1,0 +1,58 @@
+from https://medium.com/towards-data-science/philosophy-and-data-science-thinking-deeply-about-data-222cc9fbdcc5
+
+The application of philosophical concepts from epistemology to the field of data science. 
+This article focuses on three key ideas: inductive vs. deductive reasoning, skepticism, and pragmatism.
+
+## Inductive vs. Deductive Reasoning
+* Deductive Reasoning
+  - Deductive reasoning happens in a sterile space where we create our premises
+  - Creates conclusions logically derived from "premises". It forms a closed system where correct premises and logic result in airtight knowledge. 
+    Data scientists use deductive reasoning when discussing model assumptions and validating their models.
+* Inductive Reasoning
+  - Inductive reasoning also involves premises and conclusions, but the premises are often evidence instead of logical propositions
+  - Involves drawing conclusions based on "observations and evidence"(ex. data). 
+    Unlike deductive reasoning, inductive reasoning operates in the messy world 
+    and does not create logical contradictions even if conclusions are wrong. Machine learning, being inductive, 
+    induces knowledge from available information.
+
+## Skepticism
+- Skepticism is a philosophical stance characterized by doubt or suspension regarding knowledge
+
+* Problem of Induction
+  -Skepticism arises from doubts regarding knowledge, especially in scenarios where historical observations may not predict future events accurately
+  - ‘black swan’
+     if you see one thousand swans and all of them are white, 
+     you might conclude that all swans are white. Your world would be flipped upside down when you see your first black swan
+
+* Data Science and Skepticism
+  -skepticism in data science can be beneficial. It prevents blind belief, encourages rigorous validation, and helps communicate model limits to users. 
+   Skepticism also assists in managing risks associated with model inaccuracies
+
+## Pragmatism
+* Right to Believe
+  - Pragmatism counters skepticism, suggesting a "right to believe" based on evidence. 
+    It emphasizes the practical consequences of beliefs and knowledge, asserting that facts become useful when applied.
+
+* Balancing Confidence
+  - A spectrum of confidence in knowledge, ranging from total skepticism to total dogmatism. 
+    Pragmatism finds a balance in the middle, allowing beliefs supported by evidence
+
+## How Skepticism and Pragmatism Make Better Data Scientists
+* Skepticism
+- Prevents blind acceptance, leading to more robust and defensible models
+- Encourages clear communication of model limits to users
+- Helps manage risks associated with model inaccuracies
+- Prevents blind acceptance of counterintuitive model results
+
+* Pragmatism
+- Focuses on results-driven data science
+- Encourages asking "so what?" to ensure valuable insights
+- Prevents "analysis paralysis" by gathering information relevant to decisions
+- Provides a basis for understanding a model's value and comparing models
+- Allows belief in a model's usefulness based on evidence
+
+Understanding reasoning approaches, being skeptical yet practical, and striking a balance 
+between confidence extremes can contribute to building more impactful and valuable data science models
+
+
+
