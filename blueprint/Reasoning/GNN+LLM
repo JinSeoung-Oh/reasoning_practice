@@ -1,0 +1,72 @@
+from https://towardsdatascience.com/llm-and-gnn-how-to-improve-reasoning-of-both-ai-systems-on-graph-data-5ebd875eef30
+
+## Overview
+The integration of Graph Neural Networks (GNNs) and Large Language Models (LLMs) to address the increasing need for artificial 
+intelligence systems capable of multi-modal reasoning in real-world scenarios where data 
+is "interconnected with both structural and textual modalities".
+
+## Background
+# GNN
+GNNs excel at analyzing graph-structured data by leveraging message passing over graphs.
+
+# LLM
+LLMs, such as large pre-trained language models, are powerful in semantic reasoning 
+but struggle with relational reasoning over structured topology.
+
+# Real-world scenarios
+Real-world scenarios often involve interconnected data with both structural and textual modalities.
+
+## Categories of Integrated Approache
+# LLM as Enhancer
+* Explanation-Based Enhancement: LLMs generate additional node explanations, descriptors, or labels to enhance textual attributes.
+* Embedding-Based Enhancement: LLMs directly output enhanced text embeddings for improved GNN performance
+
+# LLM as Predictor
+* Graph Flattening: Graphs are flattened into sequential node descriptions for LLM predictions.
+* GNN Fusion: GNN encoders are used to extract topological representations fused with LLM token embeddings for predictions.
+
+# GNN-LLM Alignment
+* Symmetric Alignment: Graph and text encoders are aligned equally during training.
+* Asymmetric Alignment: Structural knowledge is injected directly into LLM encoders to enhance language reasoning.
+
+## Challenges
+# For LLMs
+* LLMs struggle with reasoning on graph-structured data due to the lack of intrinsic sequential structure in most graphs.
+* They find it challenging to incorporate positional and relational dependencies based on graph topology into their reasoning process.
+
+# For GNNs
+* GNNs have difficulty capturing longer-range dependencies across distant nodes.
+* They rely on fixed-sized vector representations of nodes, limiting their ability to express complex semantics.
+
+## Strategies for Improved Reasoning
+# Prompt-based Reformulation
+* Designing prompts that describe key graph concepts in natural language format to leverage LLM strengths
+
+# Multi-hop Neighbor Description
+* Describing multi-hop neighbors for each node to provide additional contextual information
+
+# In-Context Learning
+* Demonstrating graph analysis through step-by-step reasoning over examples for interpretable learning
+
+# Interpretable Fine-tuning
+* Using adapter layers and prompt-based tuning for injecting structural knowledge into LLMs
+
+## Future Outlook
+# Hierarchical Reasoning with LLM Controllers
+* Formulating LLMs as meta-controllers for dynamic coordination between graph, text, and other specialized modules
+
+# Transferable Graph-Centric Pre-training
+* Pre-training GNN models on large corpora of representative graphs before fine-tuning for improved generalization
+
+# Evaluating LLM Graph Expressivity
+* Analyzing the theoretical expressive power of LLMs with structural injections compared to graph baselines
+
+# Towards Shared Represent
+* Creating shared vector spaces for flexible reasoning, balancing specificity and commonality in aligning encoders.
+
+## Conclusion
+* Neither pure graph-centric nor text-centric approaches alone can address the complexities of interconnected data.
+* Integrating GNNs and LLMs offers an opportunity to combine topological proficiency 
+  with semantic expression for more coherent multi-paradigm reasoning
+* Ongoing exploration of techniques, hierarchical reasoning, optimized pre-training, 
+  and consolidated reasoning over shared representations are key areas for future research in graph-text synergies.
