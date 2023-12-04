@@ -1,0 +1,60 @@
+from https://python.plainenglish.io/deep-knowledge-for-deep-learning-14e373a0b1e5
+
+## Introduction
+The post begins by addressing concerns about the reliability of knowledge in language models like ChatGPT
+It introduces the idea of enriching the training process of Large Language Models (LLMs) with knowledge graphs (KG) 
+and reasoning over them. The post aims to explore the combination of LLMs and KGs for indirect question answering
+
+## Heterogeneous Graphs (HG)
+# Definition
+- HGs are graphs with various types of edges and vertices, representing specific entities and relations
+- Heterogeneous graphs refer to graphs where nodes and edges can belong to different types. Each node type represents a distinct entity, 
+  and each edge type signifies a specific relationship between entities
+# Formal Representation
+- In a heterogeneous graph, you might have various node types (e.g., "author," "paper," "institution") and edge types
+  (e.g., "wrote," "published," "cooperated")
+# Example
+- An intuitive example involves authors, papers, and institutions connected by edges like "cooperates with" and "wrote"
+# Property Graphs
+- Another variation where nodes and relationships can have associated properties
+# Use Cases
+- HGs are versatile and can represent complex relationships in various domains such as social networks, 
+  citation networks, and recommendation systems
+
+## Knowledge Graphs (KG)
+# Definition
+- KGs are a subtype of heterogeneous graphs designed to capture structured knowledge about a specific domain
+- Knowledge graphs are a specific type of graph that captures information about real-world entities and their relationships in a structured manner. 
+  KGs are designed to represent knowledge in a particular domain, often curated by experts
+# Purpose
+- KGs organize real-world entities and their interrelations, defining classes and relations and covering various domains
+# Characteristics
+- KGs include entities, relationships, and attributes organized into a graph structure. 
+  They aim to capture information about the world in a way that can be easily processed and understood
+# Use Cases
+- KGs are used for tasks such as semantic search, question answering, and knowledge representation. 
+  They play a crucial role in enhancing the semantic understanding of information
+
+## Key Differences
+# Scope and Purpose
+- HG is a more general concept that focuses on the diversity of nodes and edges in a graph
+- KG is a specialized type of HG designed to represent structured knowledge within a specific domain
+# Representation
+- HG emphasizes the diversity of types within the graph, allowing for different nodes and edges with varied semantics
+- KG focuses on representing real-world entities, their relationships, and additional attributes in a structured way
+# Applications
+- HG has broad applications in modeling relationships in diverse systems, including social networks, biological networks, 
+  and recommendation systems
+- KG is tailored for applications where the goal is to represent and query domain-specific knowledge, 
+  such as information retrieval and knowledge-based systems
+
+## In summary, while heterogeneous graphs provide a flexible framework for representing diverse relationships, 
+   knowledge graphs are a specialized form designed to capture and represent structured knowledge within a specific domain or expert domain. 
+   A knowledge graph can be considered a type of heterogeneous graph with a specific purpose
+
+## Tools for Building KGs
+# Graph Databases
+- Neo4j is highlighted as a suitable option for storing large graph data
+# Graph Neural Networks
+- PyTorch Geometric is introduced as a library integrated with PyTorch, supporting the creation of various graph types and graph neural networks
+
